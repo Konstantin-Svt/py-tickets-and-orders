@@ -73,8 +73,9 @@ class Order(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self) -> str:
+        timestamp = self.created_at.strftime("%Y-%m-%d %H:%M:%S")
         return (f"<{self.__class__.__name__}: "
-                f"{self.created_at.strftime("%Y-%m-%d %H:%M:%S")}>"
+                f"{timestamp}>"
                 )
 
 
