@@ -1,7 +1,7 @@
+from typing import Any
+
 from django.contrib.auth import get_user_model
 from django.db import transaction
-
-from db.models import User
 
 
 @transaction.atomic
@@ -11,7 +11,7 @@ def create_user(
     email: str = None,
     first_name: str = None,
     last_name: str = None,
-) -> User:
+) -> Any:
     user = get_user_model().objects.create_user(
         username=username, password=password
     )
@@ -25,7 +25,7 @@ def create_user(
     return user
 
 
-def get_user(user_id: int) -> User | None:
+def get_user(user_id: int) -> Any:
     return get_user_model().objects.filter(id=user_id).first()
 
 

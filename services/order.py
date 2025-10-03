@@ -9,14 +9,16 @@ from db.models import Order, Ticket
 
 @transaction.atomic
 def create_order(
-    tickets: list[dict], username: str, date: str = None
+    tickets: list[dict],
+    username: str,
+    date: str = None
 ) -> Order:
     order = Order.objects.create(
         user=get_user_model().objects.get(username=username)
     )
     if isinstance(date, str):
         order.created_at = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M")
-        order.save()
+    order.save()
     for ticket in tickets:
         Ticket.objects.create(
             order=order,
