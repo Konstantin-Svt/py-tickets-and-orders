@@ -26,7 +26,7 @@ def create_user(
 
 
 def get_user(user_id: int) -> Any:
-    return get_user_model().objects.filter(id=user_id).first()
+    return get_user_model().objects.get(pk=user_id)
 
 
 def update_user(
