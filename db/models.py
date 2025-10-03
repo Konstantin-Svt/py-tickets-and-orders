@@ -73,10 +73,9 @@ class Order(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self) -> str:
-        return (  # noqa: E999
-            f"<{self.__class__.__name__}: "  # noqa: E999
-            f"{self.created_at.strftime("%Y-%m-%d %H:%M:%S")}>"  # noqa: E999
-        )  # noqa: E999
+        return (f"<{self.__class__.__name__}: "
+                f"{self.created_at.strftime("%Y-%m-%d %H:%M:%S")}>"
+                )
 
 
 class Ticket(models.Model):
@@ -117,9 +116,8 @@ class Ticket(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return (  # noqa: E999
-            f"<{self.__class__.__name__}: "  # noqa: E999
-            f"{self.movie_session.movie.title} "  # noqa: E999
-            f"{str(self.movie_session.show_time)} "  # noqa: E999
-            f"(row: {self.row}, seat: {self.seat})>"  # noqa: E999
-        )  # noqa: E999
+        return (f"<{self.__class__.__name__}: "
+                f"{self.movie_session.movie.title} "
+                f"{str(self.movie_session.show_time)} "
+                f"(row: {self.row}, seat: {self.seat})>"
+                )
